@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>國一英文文法教學網站</title>
+  <style>
+    :root {
+      --main: #2563eb;
+      --main-dark: #1e40af;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --good: #16a34a;
+      --bad: #dc2626;
+      --warn: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      max-width: 820px;
+      margin: 16px auto 0;
+      color: #dbeafe;
+      font-size: 1.05rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 10px 20px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-inner a {
+      text-decoration: none;
+      color: var(--main-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-inner a:hover {
+      background: #dbeafe;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 20px 60px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .stat-card h3 {
+      margin: 0 0 8px;
+      color: var(--main-dark);
+    }
+
+    .stat-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--main-dark);
+      border-left: 6px solid var(--main);
+      padding-left: 12px;
+      font-size: 1.6rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .grammar-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      margin: 18px 0;
+    }
+
+    .grammar-box strong {
+      color: var(--main-dark);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+
+    .example {
+      background: #fff7ed;
+      border-left: 5px solid var(--warn);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    .wrong {
+      color: var(--bad);
+      text-decoration: line-through;
+      font-weight: 700;
+    }
+
+    .right {
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+
+    .quiz-card p {
+      margin-top: 0;
+      font-weight: 700;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .options label {
+      display: block;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .options label:hover {
+      border-color: var(--main);
+      background: #eff6ff;
+    }
+
+    button {
+      border: none;
+      background: var(--main);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      background: var(--main-dark);
+    }
+
+    .result {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 16px;
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+
+    @media (max-width: 800px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 22px;
+      }
+
+      table {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>國一英文文法教學網站</h1>
+    <p>本網站整理國一常見英文文法重點，包含 Be 動詞、一般動詞、現在進行式、名詞單複數、冠詞、疑問句、There is / There are、助動詞 can 與介系詞，並附有互動測驗。</p>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#be">Be 動詞</a>
+      <a href="#present">現在簡單式</a>
+      <a href="#progressive">現在進行式</a>
+      <a href="#noun">名詞與冠詞</a>
+      <a href="#question">疑問句</a>
+      <a href="#there">There is / are</a>
+      <a href="#can">Can</a>
+      <a href="#prep">介系詞</a>
+      <a href="#quiz">總複習測驗</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="intro-grid">
+      <div class="stat-card">
+        <h3>學習目標</h3>
+        <p>能看懂國一英文句型，並正確判斷主詞、動詞與句子時態。</p>
+      </div>
+      <div class="stat-card">
+        <h3>學習方法</h3>
+        <p>先理解句型規則，再透過例句與練習題確認是否真的會使用。</p>
+      </div>
+      <div class="stat-card">
+        <h3>適用對象</h3>
+        <p>國一學生、英文基礎複習者，以及需要建立文法架構的學習者。</p>
+      </div>
+    </div>
+
+    <section id="be">
+      <span class="tag">Unit 1</span>
+      <h2>Be 動詞：am / are / is</h2>
+      <p>Be 動詞用來說明主詞的身分、狀態、位置或特徵。國一最常見的 Be 動詞有 <strong>am、are、is</strong>。</p>
+
+      <table>
+        <tr>
+          <th>主詞</th>
+          <th>Be 動詞</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>am</td>
+          <td>I am a student. 我是一位學生。</td>
+        </tr>
+        <tr>
+          <td>You / We / They</td>
+          <td>are</td>
+          <td>They are my friends. 他們是我的朋友。</td>
+        </tr>
+        <tr>
+          <td>He / She / It / 單數名詞</td>
+          <td>is</td>
+          <td>She is happy. 她很開心。</td>
+        </tr>
+      </table>
+
+      <div class="grammar-box">
+        <strong>否定句：</strong>在 Be 動詞後面加 not。<br />
+        I am not tired. / He is not a teacher. / They are not in the room.
+      </div>
+
+      <div class="grammar-box">
+        <strong>疑問句：</strong>把 Be 動詞移到句首。<br />
+        You are a student. → Are you a student?<br />
+        She is your sister. → Is she your sister?
+      </div>
+
+      <div class="example">
+        常見錯誤：<span class="wrong">He are my brother.</span><br />
+        正確寫法：<span class="right">He is my brother.</span>
+      </div>
+    </section>
+
+    <section id="present">
+      <span class="tag">Unit 2</span>
+      <h2>現在簡單式：一般動詞</h2>
+      <p>現在簡單式用來表示習慣、事實、經常發生的動作。常搭配 every day、often、usually、sometimes 等時間副詞。</p>
+
+      <table>
+        <tr>
+          <th>主詞</th>
+          <th>動詞變化</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>I / You / We / They</td>
+          <td>原形動詞</td>
+          <td>I play basketball every day.</td>
+        </tr>
+        <tr>
+          <td>He / She / It / 單數名詞</td>
+          <td>動詞加 s 或 es</td>
+          <td>She plays basketball every day.</td>
+        </tr>
+      </table>
+
+      <div class="grammar-box">
+        <strong>第三人稱單數動詞變化：</strong><br />
+        一般加 s：play → plays<br />
+        以 s, x, ch, sh, o 結尾加 es：watch → watches, go → goes<br />
+        子音 + y 結尾，去 y 加 ies：study → studies
+      </div>
+
+      <div class="grammar-box">
+        <strong>否定句：</strong><br />
+        I / You / We / They + do not + 原形動詞。<br />
+        He / She / It + does not + 原形動詞。<br />
+        例：She does not like coffee.
+      </div>
+
+      <div class="example">
+        常見錯誤：<span class="wrong">He doesn't likes apples.</span><br />
+        正確寫法：<span class="right">He doesn't like apples.</span><br />
+        原因：does 已經表示第三人稱單數，後面的動詞要用原形。
+      </div>
+    </section>
+
+    <section id="progressive">
+      <span class="tag">Unit 3</span>
+      <h2>現在進行式：be + V-ing</h2>
+      <p>現在進行式用來表示「現在正在發生」的動作，句型是 <strong>主詞 + be 動詞 + V-ing</strong>。</p>
+
+      <table>
+        <tr>
+          <th>句型</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>I am + V-ing</td>
+          <td>I am reading a book.</td>
+        </tr>
+        <tr>
+          <td>You / We / They are + V-ing</td>
+          <td>They are playing soccer.</td>
+        </tr>
+        <tr>
+          <td>He / She / It is + V-ing</td>
+          <td>She is watching TV.</td>
+        </tr>
+      </table>
+
+      <div class="grammar-box">
+        <strong>V-ing 變化：</strong><br />
+        一般直接加 ing：read → reading<br />
+        字尾 e 通常去 e 加 ing：make → making<br />
+        短母音 + 單子音結尾，重複字尾加 ing：run → running
+      </div>
+
+      <div class="example">
+        常見錯誤：<span class="wrong">She watching TV.</span><br />
+        正確寫法：<span class="right">She is watching TV.</span><br />
+        原因：現在進行式不可省略 Be 動詞。
+      </div>
+    </section>
+
+    <section id="noun">
+      <span class="tag">Unit 4</span>
+      <h2>名詞單複數與冠詞 a / an / the</h2>
+      <p>英文名詞通常分為單數與複數。單數可數名詞前面通常需要冠詞，例如 a、an 或 the。</p>
+
+      <table>
+        <tr>
+          <th>類型</th>
+          <th>規則</th>
+          <th>例子</th>
+        </tr>
+        <tr>
+          <td>一般複數</td>
+          <td>加 s</td>
+          <td>book → books</td>
+        </tr>
+        <tr>
+          <td>以 s, x, ch, sh 結尾</td>
+          <td>加 es</td>
+          <td>box → boxes, watch → watches</td>
+        </tr>
+        <tr>
+          <td>子音 + y 結尾</td>
+          <td>去 y 加 ies</td>
+          <td>baby → babies</td>
+        </tr>
+        <tr>
+          <td>不規則變化</td>
+          <td>需另外記憶</td>
+          <td>man → men, child → children</td>
+        </tr>
+      </table>
+
+      <div class="grammar-box">
+        <strong>a / an：</strong>表示「一個」，用於第一次提到的單數可數名詞。<br />
+        a book / a student / an apple / an egg
+      </div>
+
+      <div class="grammar-box">
+        <strong>the：</strong>表示「特定的那一個」或前面已經提過的事物。<br />
+        I see a dog. The dog is cute.
+      </div>
+    </section>
+
+    <section id="question">
+      <span class="tag">Unit 5</span>
+      <h2>疑問句與 Wh- 疑問詞</h2>
+      <p>英文疑問句常分為 Yes / No 問句與 Wh- 問句。Wh- 疑問詞用來詢問人、事、地點、時間、原因或方式。</p>
+
+      <table>
+        <tr>
+          <th>疑問詞</th>
+          <th>意思</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>What</td>
+          <td>什麼</td>
+          <td>What is your name?</td>
+        </tr>
+        <tr>
+          <td>Who</td>
+          <td>誰</td>
+          <td>Who is your English teacher?</td>
+        </tr>
+        <tr>
+          <td>Where</td>
+          <td>哪裡</td>
+          <td>Where do you live?</td>
+        </tr>
+        <tr>
+          <td>When</td>
+          <td>什麼時候</td>
+          <td>When do you go to school?</td>
+        </tr>
+        <tr>
+          <td>Why</td>
+          <td>為什麼</td>
+          <td>Why are you late?</td>
+        </tr>
+        <tr>
+          <td>How</td>
+          <td>如何、怎麼</td>
+          <td>How do you go to school?</td>
+        </tr>
+      </table>
+
+      <div class="grammar-box">
+        <strong>一般動詞疑問句：</strong><br />
+        Do / Does + 主詞 + 原形動詞？<br />
+        Do you like English?<br />
+        Does he play baseball?
+      </div>
+    </section>
+
+    <section id="there">
+      <span class="tag">Unit 6</span>
+      <h2>There is / There are</h2>
+      <p>There is / There are 用來表示「某處有某物」。後面名詞是單數用 There is，後面名詞是複數用 There are。</p>
+
+      <table>
+        <tr>
+          <th>句型</th>
+          <th>用法</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>There is + 單數名詞</td>
+          <td>有一個</td>
+          <td>There is a cat under the table.</td>
+        </tr>
+        <tr>
+          <td>There are + 複數名詞</td>
+          <td>有多個</td>
+          <td>There are three books on the desk.</td>
+        </tr>
+      </table>
+
+      <div class="example">
+        常見錯誤：<span class="wrong">There is many students.</span><br />
+        正確寫法：<span class="right">There are many students.</span>
+      </div>
+    </section>
+
+    <section id="can">
+      <span class="tag">Unit 7</span>
+      <h2>助動詞 can</h2>
+      <p>can 表示「能夠、會、可以」。can 後面必須接原形動詞，不會因為主詞改變而加 s。</p>
+
+      <table>
+        <tr>
+          <th>句型</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>肯定句：主詞 + can + 原形動詞</td>
+          <td>She can swim.</td>
+        </tr>
+        <tr>
+          <td>否定句：主詞 + cannot / can't + 原形動詞</td>
+          <td>He can't ride a bike.</td>
+        </tr>
+        <tr>
+          <td>疑問句：Can + 主詞 + 原形動詞？</td>
+          <td>Can you speak English?</td>
+        </tr>
+      </table>
+
+      <div class="example">
+        常見錯誤：<span class="wrong">She can swims.</span><br />
+        正確寫法：<span class="right">She can swim.</span>
+      </div>
+    </section>
+
+    <section id="prep">
+      <span class="tag">Unit 8</span>
+      <h2>常見介系詞：in / on / under / by / at</h2>
+      <p>介系詞通常用來表示位置、時間或關係。國一常見的是位置介系詞。</p>
+
+      <table>
+        <tr>
+          <th>介系詞</th>
+          <th>意思</th>
+          <th>例句</th>
+        </tr>
+        <tr>
+          <td>in</td>
+          <td>在……裡面</td>
+          <td>The pencil is in the box.</td>
+        </tr>
+        <tr>
+          <td>on</td>
+          <td>在……上面</td>
+          <td>The book is on the desk.</td>
+        </tr>
+        <tr>
+          <td>under</td>
+          <td>在……下面</td>
+          <td>The cat is under the chair.</td>
+        </tr>
+        <tr>
+          <td>by</td>
+          <td>在……旁邊</td>
+          <td>The girl is by the window.</td>
+        </tr>
+        <tr>
+          <td>at</td>
+          <td>在某地點或時間點</td>
+          <td>We are at school.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="quiz">
+      <span class="tag">Practice</span>
+      <h2>總複習互動測驗</h2>
+      <p>請選出正確答案，完成後按下「檢查答案」。</p>
+
+      <div class="quiz-card">
+        <p>1. She ____ my sister.</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> am</label>
+          <label><input type="radio" name="q1" value="b"> are</label>
+          <label><input type="radio" name="q1" value="c"> is</label>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <p>2. He ____ basketball every Sunday.</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="a"> play</label>
+          <label><input type="radio" name="q2" value="b"> plays</label>
+          <label><input type="radio" name="q2" value="c"> playing</label>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <p>3. They ____ watching TV now.</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="a"> am</label>
+          <label><input type="radio" name="q3" value="b"> are</label>
+          <label><input type="radio" name="q3" value="c"> is</label>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <p>4. There ____ three dogs in the park.</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="a"> is</label>
+          <label><input type="radio" name="q4" value="b"> are</label>
+          <label><input type="radio" name="q4" value="c"> am</label>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <p>5. My brother can ____ English.</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> speaks</label>
+          <label><input type="radio" name="q5" value="b"> speaking</label>
+          <label><input type="radio" name="q5" value="c"> speak</label>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <p>6. I see ____ apple on the table.</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="a"> a</label>
+          <label><input type="radio" name="q6" value="b"> an</label>
+          <label><input type="radio" name="q6" value="c"> the</label>
+        </div>
+      </div>
+
+      <button onclick="checkAnswers()">檢查答案</button>
+      <button onclick="resetQuiz()" style="background:#64748b;">重新作答</button>
+
+      <div id="result" class="result" style="display:none;"></div>
+      <p class="note">建議：若答錯，回到對應單元重新閱讀句型規則，再做一次測驗。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>國一英文文法教學網站｜HTML + CSS + JavaScript 單檔版</p>
+  </footer>
+
+  <script>
+    const answers = {
+      q1: "c",
+      q2: "b",
+      q3: "b",
+      q4: "b",
+      q5: "c",
+      q6: "b"
+    };
+
+    const explanations = {
+      q1: "She 是第三人稱單數，Be 動詞要用 is。",
+      q2: "He 是第三人稱單數，現在簡單式動詞 play 要加 s，變成 plays。",
+      q3: "They 搭配 are，現在進行式句型為 be + V-ing。",
+      q4: "three dogs 是複數名詞，所以要用 There are。",
+      q5: "can 後面要接原形動詞，所以用 speak。",
+      q6: "apple 以母音音素開頭，且是單數可數名詞，所以用 an。"
+    };
+
+    function checkAnswers() {
+      let score = 0;
+      let total = Object.keys(answers).length;
+      let feedback = "";
+
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+          feedback += `<p class="right">第 ${q.replace("q", "")} 題：答對。${explanations[q]}</p>`;
+        } else {
+          feedback += `<p class="wrong">第 ${q.replace("q", "")} 題：答錯。</p><p>${explanations[q]}</p>`;
+        }
+      }
+
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      result.innerHTML = `你的分數：${score} / ${total}<hr>${feedback}`;
+      result.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+      const result = document.getElementById("result");
+      result.style.display = "none";
+      result.innerHTML = "";
+    }
+  </script>
+</body>
+</html>
