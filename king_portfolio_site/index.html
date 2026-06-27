@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="資訊管理、資訊安全、AI 應用整合與 IT 治理個人網站" />
+  <title>KING TSAI｜IT Management & Cybersecurity</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="主要導覽">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="brand-mark">KT</span>
+        <span class="brand-text">KING TSAI</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">Menu</button>
+      <div class="nav-links" id="navMenu">
+        <a href="#profile">專業概述</a>
+        <a href="#capabilities">核心能力</a>
+        <a href="#experience">經歷</a>
+        <a href="#education">學歷證照</a>
+        <a href="#projects">專案</a>
+        <a class="contact-link" id="navEmailLink" href="#contact">E-mail 聯絡</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-field="profile.kicker">Information Management・Cybersecurity・AI Integration</p>
+          <h1 data-field="profile.displayName">KING TSAI</h1>
+          <h2 data-field="profile.headline">資訊管理與資訊安全管理者</h2>
+          <p class="hero-summary" data-field="profile.tagline">以穩定維運、資安治理與 AI 應用整合，協助企業提升資訊治理品質與營運效率。</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#capabilities">查看核心能力</a>
+            <a class="btn ghost" href="#experience">檢視職涯經歷</a>
+          </div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="專業定位">
+          <div class="orb"></div>
+          <p class="panel-title">Professional Focus</p>
+          <ul id="focusList" class="focus-list"></ul>
+          <p class="privacy-note" data-field="profile.contactNote">基於個資保護，本網站不公開電話、Email、住址、生日、身分證字號與個人照片。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="profile" class="section-pad compact">
+      <div class="container profile-layout">
+        <div class="section-head reveal">
+          <p class="eyebrow">Profile</p>
+          <h2>專業概述</h2>
+        </div>
+        <div class="profile-card reveal">
+          <p id="summaryText"></p>
+          <blockquote id="mottoText"></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics-band" aria-label="職涯摘要數據">
+      <div class="container metrics" id="metricsList"></div>
+    </section>
+
+    <section id="capabilities" class="section-pad">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Capabilities</p>
+          <h2>核心能力</h2>
+          <p>聚焦於 MIS 維運治理、資安管理、雲端基礎架構、AI 工具導入與跨部門專案推動。</p>
+        </div>
+        <div class="capability-grid" id="capabilityGrid"></div>
+        <div class="skills-panel reveal">
+          <h3>技術與工具</h3>
+          <div class="tag-cloud" id="skillTags"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-pad dark-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>職涯經歷</h2>
+          <p>公司名稱以產業與規模呈現，避免揭露不必要個資與敏感任職資訊。</p>
+        </div>
+        <div class="timeline" id="experienceTimeline"></div>
+      </div>
+    </section>
+
+    <section id="education" class="section-pad">
+      <div class="container two-col">
+        <div>
+          <div class="section-head reveal left">
+            <p class="eyebrow">Education</p>
+            <h2>學歷與學習表現</h2>
+          </div>
+          <div id="educationList" class="stack-list"></div>
+        </div>
+        <div>
+          <div class="section-head reveal left">
+            <p class="eyebrow">Certifications</p>
+            <h2>專業認證</h2>
+          </div>
+          <div id="certList" class="cert-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-pad dark-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>專案與代表成果</h2>
+        </div>
+        <div id="projectGrid" class="project-grid"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad compact">
+      <div class="container cta-card reveal">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 data-field="contact.title">合作與職務洽談</h2>
+          <p data-field="contact.text">若有 MIS 主管、資訊安全主管、IT 治理、AI 工具治理或相關職務洽談，可透過下方 E-mail 聯絡。</p>
+          <p class="contact-mail" id="contactEmailText"></p>
+        </div>
+        <a class="btn primary" id="contactEmailBtn" href="#">E-mail 聯絡</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> KING TSAI. All rights reserved.</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
