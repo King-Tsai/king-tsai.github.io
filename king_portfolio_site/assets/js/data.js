@@ -25,8 +25,8 @@ window.DEFAULT_PORTFOLIO_DATA = {
     "跨部門協作與 IT 專案推動"
   ],
   metrics: [
-    { value: "17+", label: "年資訊實務經驗", note: "涵蓋 MIS、網路、資安與 IT 管理" },
-    { value: "5+", label: "管理與主管職歷練", note: "持續累積團隊與部門管理經驗" },
+    { value: "25+", label: "年資訊實務經驗", note: "涵蓋 MIS、網路、資安與 IT 管理" },
+    { value: "15+", label: "管理與主管職歷練", note: "持續累積團隊與部門管理經驗" },
     { value: "MIS / 資安", label: "職能主軸", note: "兼具資訊管理與資訊安全治理能力" },
     { value: "AI", label: "應用整合支援", note: "具生成式 AI 工具評估與內部導入經驗" }
   ],
@@ -151,10 +151,10 @@ window.DEFAULT_PORTFOLIO_DATA = {
       school: "景文技術學院",
       degree: "資訊管理學系｜大學",
       period: "2003/09 – 2005/06",
-      note: "畢業時以系排名第一名完成學業，並獲九十三學年度新店市長獎肯定。",
+      note: "畢業時以系排名第一名完成學業，並獲九十三學年度市長獎肯定。",
       awards: [
         {
-          title: "九十三學年度新店市長獎",
+          title: "九十三學年度市長獎",
           image: "assets/images/education/xindian-mayor-award.jpg"
         }
       ]
