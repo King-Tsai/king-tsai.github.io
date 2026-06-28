@@ -6,7 +6,7 @@ window.DEFAULT_PORTFOLIO_DATA = {
     tagline: "以穩定維運、資安治理與 AI 應用整合，協助企業提升資訊治理品質與營運效率。",
     summary: "具備多年資訊管理、MIS 維運、資訊安全管理與 IT 部門管理經驗，職涯歷程涵蓋網路與系統維運、資訊資產管理、資安政策規劃、資安事件應變、跨部門需求協調與資訊專案推動。除傳統 MIS 與資安管理外，亦具備數位轉型與 AI 工具應用支援經驗，能協助企業在治理、效率與技術應用之間取得平衡。",
     motto: "以親和待人、以耐心溝通、以邏輯處事，在穩定與細心中累積信任，與團隊共同創造價值。",
-    contactNote: "基於個資保護，本網站不公開電話、住址、生日、身分證字號等敏感資訊；如需聯繫請使用 E-mail。"
+    contactNote: "如需聯繫請使用 E-mail。"
   },
   contact: {
     title: "合作與職務洽談",
@@ -64,7 +64,7 @@ window.DEFAULT_PORTFOLIO_DATA = {
   ],
   skillCategories: [
     { category: "作業系統類", items: ["Linux", "Windows Server"] },
-    { category: "程式設計類", items: ["PHP"] },
+    { category: "程式設計類", items: ["PHP"], "Python"] },
     { category: "伺服器(Server)", items: ["VMware", "Hyper-V"] },
     { category: "網路技術類", items: ["Cisco", "Firewall", "Routers", "VPN", "VLAN"] },
     { category: "資料庫設計類", items: ["MS SQL", "MySQL"] },
